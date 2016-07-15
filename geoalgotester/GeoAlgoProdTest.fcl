@@ -1,0 +1,43 @@
+#
+# GeoAlgo GeoAlgoAnalysisTest module
+# 
+# Version: 1.1
+#
+
+process_name: geoalgotest
+
+source: {
+   module_type: RootInput
+   maxEvents:   -1
+
+#  module_type: EmptyEvent
+#  maxEvents:   1       # Number of events to create
+}
+
+outputs:
+{
+ out1:
+ {
+   module_type: RootOutput
+   fileName:    "geoalgotest.root"
+   dataTier:    "test"
+   compressionLevel: 1
+ }
+}
+
+physics:
+{
+  producers:
+  {
+    testgeoalgoprod:
+    {
+      module_type:     "GeoAlgoProducerTest" # GeoAlgoProducerTest
+      hitlabel:        "gaushit" 
+    }
+  }
+  athing: [ testgeoalgoprod ]
+  stream1: [ out1 ]
+  trigger_paths: [ athing ] 
+  end_paths: [ stream1 ] 
+}
+
