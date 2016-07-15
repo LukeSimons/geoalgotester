@@ -79,7 +79,7 @@ namespace GeoAlgoAnalysisTest {
       auto hitTime = hit.PeakTime();
 
       if( hitTime != 0 ){
-//        std::cout << "\narb is: " << hitTime;
+        std::cout << "\narb is: " << hitTime;
       }
     }
   }

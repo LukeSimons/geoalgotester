@@ -76,7 +76,7 @@ namespace GeoAlgoProducerTest {
       = event.getValidHandle<std::vector<recob::Hit>>
       (fHitLabel);
 
-    std::unique_ptr<std::vector<recob::Hit> > recobhit(new std::vector<recob::Hit>);
+    std::unique_ptr<std::vector<recob::Hit> > newhit(new std::vector<recob::Hit>);
 
     geoalgo::Vector vec_k = geoalgo::Vector(3,4,5);
 
@@ -88,9 +88,9 @@ namespace GeoAlgoProducerTest {
 //        std::cout << "\nhitTime is: " << hitPeak; 
 //        std::cout << "\nvec_k.Length() is: " << vec_k.Length();
         double arb = hitTime * (vec_k.Length());
-//        std::cout << "\narb is: " << arb;
+        std::cout << "\narb is: " << arb;
  
-        recobhit->emplace_back(
+        newhit->emplace_back(
                 hit.Channel(),//ChanID,
 		hit.StartTick(),//timetick,
 		hit.EndTick(),//timetick,
@@ -112,10 +112,10 @@ namespace GeoAlgoProducerTest {
                 );         
       }
     }
-    event.put(std::move(recobhit));
+    event.put(std::move(newhit));
 
 //    e.put(std::move(rawdigit_ptr));
-//    recobhit->put_into(event); 
+//    newhit->put_into(event); 
   }
 
   //......................................................................

@@ -8,7 +8,7 @@ process_name: geoalgotest
 
 source: {
    module_type: RootInput
-   maxEvents:   -1
+   maxEvents:   1
 
 #  module_type: EmptyEvent
 #  maxEvents:   1       # Number of events to create
