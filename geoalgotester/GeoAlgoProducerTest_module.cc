@@ -65,7 +65,6 @@ namespace GeoAlgoProducerTest {
   //......................................................................
   void GeoAlgoProducerTest::beginJob()
   {
-//    std::cout << "\nIn GeoAlgoProducerTest::beginJob()";    
   } //GeoAlgoProducerTest::beginJob()
 
    
@@ -85,8 +84,6 @@ namespace GeoAlgoProducerTest {
       auto hitTime = hit.PeakTime();
 
       if( hitTime != 0 ){
-//        std::cout << "\nhitTime is: " << hitPeak; 
-//        std::cout << "\nvec_k.Length() is: " << vec_k.Length();
         double arb = hitTime * (vec_k.Length());
         std::cout << "\narb is: " << arb;
  
@@ -113,9 +110,6 @@ namespace GeoAlgoProducerTest {
       }
     }
     event.put(std::move(newhit));
-
-//    e.put(std::move(rawdigit_ptr));
-//    newhit->put_into(event); 
   }
 
   //......................................................................
