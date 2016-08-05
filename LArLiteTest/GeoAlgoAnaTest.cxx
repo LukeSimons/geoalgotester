@@ -2,6 +2,10 @@
 #define LARLITE_GEOALGOANATEST_CXX
 
 #include "GeoAlgoAnaTest.h"
+#include "lardataobj/RecoBase/Hit.h"
+#include "DataFormat/wrapper.h"
+#include "larcoreobj/GeoAlgo/GeoAlgo.h"
+#include "larcoreobj/GeoAlgo/GeoVector.h"
 
 namespace larlite {
 
@@ -11,18 +15,16 @@ namespace larlite {
   
   bool GeoAlgoAnaTest::analyze(storage_manager* storage) {
 
+    // Use arbitary algorithm from shared repository
+    geoalgo::Vector vec_k = geoalgo::Vector(3,4,5);
     
+    // Access shared data products
+    auto my_larsofthits = storage->get_data<larlite::wrapper<std::vector<recob::Hit> > >("testgeoalgoprod"); 
 
-//    auto my_larsofthits = (::larlite::wrapper<std::vector<recob::Hit> >*)(my_storage.get_data(larlite::data::kLarSoftHit,"test"));
-    auto my_larsofthits = storage->get_data<larlite::wrapper<std::vector<recob::Hit> > >("test");
-    
-//    std::cout << "\n 0 RMS = " << my_larsofthits->product()->at(0).RMS() << ", 1 RMS = " << my_larsofthits->product()->at(1).RMS() << std::endl;
-
-//    auto hit = storage->get_data<larsofthit>("Hit");
-
-//    if ( !(ev_mct) ){ std::cout << "\n\nError! Storage manager failed to retrieve data."; return true; }
-
-    std::cout << "\narb is: " << my_larsofthits->product()->at(0).PeakTime();
+    auto Hits = my_larsofthits->product();
+   
+    // Output arbitrary value
+    std::cout << "\narb is: " << Hits->at(0).PeakTime() * (vec_k.Length());
  
     return true;
   }
